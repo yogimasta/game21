@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2c2c2c;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.poker-table {
+    width: 600px;
+    height: 450px;
+    background-color: green;
+    border-radius: 50%;
+    margin: 30px auto;
+    position: relative; /* Importante para que los elementos hijos con position: absolute se posicionen dentro de la mesa */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-style: solid;
+    border-color: #d4af37;
+    border-width: 15px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    margin: 5px;  /* Se redujo de 10px */
+    position: relative;
+}
+
+#deck {
+    width: 45px;  /* Se redujo de 60px */
+    height: 70px;  /* Se redujo de 90px */
+    background-color: gray;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;  /* Se redujo de 24px */
+    margin: 5px;  /* Se redujo de 10px */
+    border: 2px solid black;  /* Se redujo de 3px */
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);  /* Se redujo de 10px */
+    position: absolute; /* Para fijar su posición en relación con la mesa */
+    left: 70%; /* A un lado de la mesa de póker */
+    top: 50%;  /* Centrado verticalmente respecto a la mesa */
+    transform: translateY(-50%);  /* Para ajustar el mazo verticalmente */
+    z-index: 5;  /* Asegurarse de que esté por encima de otros elementos */
+    pointer-events: none;  /* Para que no se vea afectado por interacciones con otros elementos (opcional) */
+}
+
+.cards {
+    width: 45px;  /* Se redujo de 60px */
+    height: 70px;  /* Se redujo de 90px */
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 18px;  /* Se redujo de 24px */
+    margin: 5px;  /* Se redujo de 10px */
+    border: 2px solid black;  /* Se redujo de 3px */
+    transition: transform 1s ease-out, opacity 1s ease-out, background-color 1s ease-out, color 1s ease-out;
+    transform: translateY(-70px);  /* Se redujo de -100px */
+    opacity: 0;
+}
+
+.cards.animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.cards.hidden {
+    background-color: gray;
+    color: gray;
+}
+
+.betting-area {
+    margin: 15px;  /* Se redujo de 20px */
+}
+
+.bet-zone {
+    width: 600px;
+    height: 450px;
+    background-color: #444;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+    position: absolute; /* Permite que la zona de apuesta esté en cualquier parte del tablero */
+    top: 50%; /* Posición inicial centrada en el tablero */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Ajuste para centrarla completamente */
+    opacity: 0;
+}
+
+
+.chip-container {
+    margin: 15px;  /* Se redujo de 20px */
+    display: flex;
+    justify-content: center;
+    gap: 15px;  /* Se redujo de 20px */
+}
+
+.chip {
+    width: 45px;  /* Se redujo de 60px */
+    height: 45px;  /* Se redujo de 60px */
+    background-color: #d4af37;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;  /* Se redujo de 18px */
+    color: black;
+    cursor: pointer;
+}
+
+.chip:hover {
+    background-color: #b58831;
+}
+
+button {
+    padding: 8px 15px;  /* Se redujo de 10px 20px */
+    background-color: #d4af37;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;  /* Se redujo de 18px */
+    margin: 8px;  /* Se redujo de 10px */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #b58831;
+}

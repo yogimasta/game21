@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack 21</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Juego de Blackjack</h1>
+    <p id="coins">Saldo actual: $1000</p>
+
+    <div class="poker-table">
+        <div id="dealer" class="player-area">
+            <h2>Crupier</h2>
+            <div id="dealer-cards" class="card-container"></div>
+        </div>
+        
+        <div id="player" class="player-area" style="margin-top:100px">
+            <h2>Jugador</h2>
+            <div id="player-cards" class="card-container"></div>
+        </div>
+
+        <div class="deck-container">
+            <div id="deck"></div>
+        </div>
+    </div>
+
+    <!-- Área de apuestas -->
+    <div class="betting-area">
+        <h2>Arrastra las fichas al tablero</h2>
+        <div id="bet-zone" class="bet-zone">Zona de Apuesta</div>
+    </div>
+
+    <!-- Fichas de apuesta -->
+    <div class="chip-container">
+        <div class="chip" id="chip-10" draggable="true" data-value="10">$10</div>
+        <div class="chip" id="chip-50" draggable="true" data-value="50">$50</div>
+        <div class="chip" id="chip-100" draggable="true" data-value="100">$100</div>
+        <div class="chip" id="chip-200" draggable="true" data-value="200">$200</div>
+    </div>
+
+    <p id="game-result"></p>
+
+    <button id="start-button" disabled>Iniciar Juego</button>
+    <button id="hit-button" disabled>Pedir Carta</button>
+    <button id="stand-button" disabled>Plantarse</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
