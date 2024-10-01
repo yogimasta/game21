@@ -184,7 +184,7 @@ standButton.addEventListener('click', () => {
     standButton.disabled = true;
     money.textContent = `Saldo actual: $${playerBalance}`; // Mostrar saldo al iniciar el juego
 });
-// Función para detectar si el dispositivo es táctil
+/// Función para detectar si el dispositivo es táctil
 // Para escritorio: drag and drop
 chips.forEach(chip => {
     chip.addEventListener('dragstart', (e) => {
@@ -212,18 +212,21 @@ betZone.addEventListener('drop', (e) => {
 
 // Soporte para pantallas táctiles (móviles)
 chips.forEach(chip => {
-    // Detecta el inicio del toque
+    // Prevenir selección de texto al tocar
     chip.addEventListener('touchstart', (e) => {
+        e.preventDefault(); // Previene el comportamiento predeterminado
         const touch = e.touches[0];
-        e.dataTransfer = { setData: (key, value) => chip.setAttribute('data-value', value) }; // Simulamos el dataTransfer
         chip.classList.add('dragging');
-        e.dataTransfer.setData('value', chip.getAttribute('data-value'));
+        chip.setAttribute('data-value', chip.getAttribute('data-value'));
+        chip.style.position = 'absolute'; // Cambia la posición a absoluto
+        chip.style.left = `${touch.pageX - chip.offsetWidth / 2}px`;
+        chip.style.top = `${touch.pageY - chip.offsetHeight / 2}px`;
     });
 
     // Mueve la ficha con el toque
     chip.addEventListener('touchmove', (e) => {
+        e.preventDefault(); // Previene el comportamiento predeterminado
         const touch = e.touches[0];
-        chip.style.position = 'absolute';
         chip.style.left = `${touch.pageX - chip.offsetWidth / 2}px`;
         chip.style.top = `${touch.pageY - chip.offsetHeight / 2}px`;
     });
@@ -232,7 +235,6 @@ chips.forEach(chip => {
     chip.addEventListener('touchend', (e) => {
         const touch = e.changedTouches[0];
         const chipValue = parseInt(chip.getAttribute('data-value'));
-
         const betZoneRect = betZone.getBoundingClientRect();
 
         // Si el toque termina dentro de la zona de apuesta
@@ -248,6 +250,7 @@ chips.forEach(chip => {
                 alert('No tienes suficiente saldo para esta apuesta.');
             }
         }
+
         chip.classList.remove('dragging');
         chip.style.position = ''; // Resetea la posición después del drop
         chip.style.left = '';
